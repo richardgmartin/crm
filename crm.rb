@@ -7,13 +7,12 @@ require_relative "rolodex"
 
 class CRM
 
-	# need attribute declaration for "name"
 	# determine how to handle "user_selected" variable
 
+	attr_reader :name
 
 	def initialize(name)
-		# some code creating the instance variable ... i think
-		# @name = name
+		@name = name
 	end
 		
 	def print_main_menu
@@ -27,6 +26,7 @@ class CRM
 	end
 
 	def main_menu
+	  puts "Welcome to my #{@name}"	
 	  print_main_menu
 	  user_selected = gets.to_i
 	  call_option(user_selected)
@@ -88,3 +88,7 @@ class CRM
 	end
 			
 end
+
+crm = CRM.new("the rgm crm")
+
+
