@@ -42,9 +42,9 @@ class CRM
   	  case user_selected
       when 1 then add_new_contact
       when 2 then @rolodex.modify_existing_contact
-      when 3 then delete_contact
-      when 4 then display_all_contacts
-      when 5 then display_attribute
+      when 3 then @rolodex.delete_contact
+      when 4 then @rolodex.display_all_contacts
+      when 5 then @rolodex.display_attribute
       when 6
       	puts "Goodbye"
       	return
