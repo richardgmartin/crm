@@ -13,6 +13,8 @@ class CRM
 
 	def initialize(name)
 		@name = name
+		@rolodex = Rolodex.new
+		puts "Welcome to my #{@name}"
 	end
 		
 	def print_main_menu
@@ -26,7 +28,6 @@ class CRM
 	end
 
 	def main_menu
-	  puts "Welcome to my #{@name}"	
 	  print_main_menu
 	  user_selected = gets.to_i
 	  call_option(user_selected)
@@ -65,6 +66,8 @@ class CRM
       print "Enter a Note: "
       note = gets.chomp
       contact = Contact.new(first_name, last_name, email, note)
+      @rolodex.add_contact(Contact.new(first_name, last_name, email, note))
+      main_menu
 	end
 	
 	def modify_existing_contact
@@ -90,5 +93,6 @@ class CRM
 end
 
 crm = CRM.new("the rgm crm")
+
 
 
