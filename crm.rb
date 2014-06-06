@@ -11,6 +11,11 @@ class CRM
 
 	attr_reader :name
 
+	def self.run(name)
+		crm = self.new(name)
+		crm.main_menu
+	end	
+
 	def initialize(name)
 		@name = name
 		@rolodex = Rolodex.new
@@ -34,16 +39,9 @@ class CRM
 	end
 
 	def call_option(user_selected)
-  	  # add_new_contact if user_selected == 1
-  	  # modify_existing_contact if user_selected == 2
-  	  # delete_contact if user_selected == 3
-     #  display_all_contacts if user_selected == 4
-     #  display_attribute if user_selected == 5
-     #  exit_crm if user_selected == 6
-
-      case user_selected
+  	  case user_selected
       when 1 then add_new_contact
-      when 2 then modify_existing_contact
+      when 2 then @rolodex.modify_existing_contact
       when 3 then delete_contact
       when 4 then display_all_contacts
       when 5 then display_attribute
@@ -67,32 +65,24 @@ class CRM
       note = gets.chomp
       contact = Contact.new(first_name, last_name, email, note)
       @rolodex.add_contact(Contact.new(first_name, last_name, email, note))
+      # @rolodex.add_contact(contact)
       main_menu
 	end
 	
-	def modify_existing_contact
-		# some code
-	end
-
-	def delete_contact
-		# some code
-	end
-
-	def display_all_contacts
-		# some code
-	end
-
-	def display_attribute
-		# some code
-	end
-
-	def exit_crm
-		# some code
-	end
 			
 end
 
-crm = CRM.new("the rgm crm")
+# issue Class method call
+CRM.run("the rgm crm")
+
+
+# issue instance method call
+# crm = CRM.new("the rgm crm")
+# crm.menu_main
+
+
+
+
 
 
 
